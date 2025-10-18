@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于YOLOv11的油松雄球花物候期识别系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌲 基于YOLOv11的油松雄球花物候期识别系统</h1>
+            <p>支持伸长期、成熟期、衰退期的多时期识别 - 支持图片和视频检测</p>
+        </header>
+
+        <div class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <h3>拖拽文件到此处或点击选择</h3>
+                <p>支持 JPG, PNG, MP4, AVI, MOV 格式</p>
+                <div class="file-types">
+                    <span class="file-type-tag">图片</span>
+                    <span class="file-type-tag">视频</span>
+                </div>
+            </div>
+            <input type="file" id="fileInput" accept="image/*,video/*" style="display:none">
+            <button id="detectBtn" disabled>开始检测</button>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p id="loadingText">正在检测中...</p>
+            <div class="progress-bar" id="progressBar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <h2 style="text-align:center; margin-bottom:20px;">检测结果</h2>
+            
+            <div class="file-preview" id="filePreview">
+                <!-- 文件预览区域 -->
+            </div>
+
+            <div class="detection-results">
+                <div class="results-container">
+                    <div class="result-box">
+                        <h3>原文件</h3>
+                        <div id="originalContainer" class="media-container"></div>
+                    </div>
+                    <div class="result-box">
+                        <h3>检测结果</h3>
+                        <div id="resultContainer" class="media-container"></div>
+                    </div>
+                </div>
+                
+                <div class="info-panel">
+                    <div class="statistics-box">
+                        <h3>📊 检测统计</h3>
+                        <div id="statisticsInfo"></div>
+                    </div>
+                    <div class="details-box">
+                        <h3>🔍 检测详情</h3>
+                        <div id="detectionInfo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="legend">
+                <h4>图例说明：</h4>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <span class="color-dot" style="background-color: #00FF00;"></span>
+                        <span>伸长期 - 绿色</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="color-dot" style="background-color: #FFA500;"></span>
+                        <span>成熟期 - 橙色</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="color-dot" style="background-color: #FF0000;"></span>
+                        <span>衰退期 - 红色</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
